@@ -1,0 +1,5 @@
+An OTLP exporter (e.g., data source) sends metrics to the ingestion API.
+DNS-based routing and load balancing distribute requests across OTLP collector ingestion nodes.
+OTLP collector ingestion nodes export metrics to distributed message queue (e.g., Kafka).
+OTLP collector processing nodes consume metrics from distributed message queue.
+OTLP collector processing nodes persist metrics to hot storage (e.g., influxDB) which expires to warm storage (e.g., ClickHouse) which expires to cold storage (e.g., MinIO).
