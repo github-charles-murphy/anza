@@ -6,7 +6,7 @@ Uses a distributed message queue for decoupling, buffering, durability and avail
 2. Processing Layer:
 
 Consumes telemetry from the ingestion layer asynchronously.
-Optionally, perform downsampling and/or transformation of telemetry (e.g., using statistical and windowing techniques).
+Optionally, perform downsampling, aggregation and/or transformation of telemetry (e.g., using statistical and windowing techniques).
 Sends transformed data to storage layer.
 
 3. Storage Layer:
