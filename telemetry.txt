@@ -1,0 +1,21 @@
+1. Ingestion Layer
+
+Ingests telemetry via a high-throughput, distributed API (e.g., Otel Collector - OLTP via HTTP/gRPC).
+Uses a distributed message queue for decoupling, buffering, durability and availability of high-velocity telemetry (e.g., Kafka).
+
+2. Processing Layer:
+
+Consumes telemetry from the ingestion layer asynchronously.
+Optionally, perform downsampling and/or transformation of telemetry (e.g., using statistical and windowing techniques).
+Sends transformed data to storage layer.
+
+3. Storage Layer:
+
+Hot Storage: High-performance TSDB for recent data. Apply TTL policies to retire data to warm storage.
+Warm Storage: Columnar database for mid-term storage. Apply TTL policies to retire data to cold storage.
+Cold Storage: Archival storage for historical data with aggressive compression.
+
+4. Indexing & Query Layer:
+
+A query engine routes requests to appropriate storage based on the time range.
+For each storage, data indexing/partitioning based on time and/or source is configured for efficient querying.
