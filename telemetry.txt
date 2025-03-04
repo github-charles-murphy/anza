@@ -11,11 +11,11 @@ Sends transformed data to storage layer.
 
 3. Storage Layer:
 
-Hot Storage: High-performance TSDB for recent data. Apply TTL policies to retire data to warm storage.
+Hot Storage: High-performance time-series database (TSDB) for recent data. Apply TTL policies to retire data to warm/cold storage.
 Warm Storage: Columnar database for mid-term storage. Apply TTL policies to retire data to cold storage.
-Cold Storage: Archival storage for historical data with aggressive compression.
+Cold Storage: Object storage for historical/archival data with aggressive compression.
 
 4. Indexing & Query Layer:
 
-A query engine routes requests to appropriate storage based on the time range.
+A multi-tiered query-federation engine routes requests to appropriate storage based on the time range.
 For each storage, data indexing/partitioning based on time and/or source is configured for efficient querying.
