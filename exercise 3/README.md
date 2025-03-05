@@ -12,10 +12,10 @@
 
 ---
 
-### Related Files  
+### Commands  
 - **Run:** [`install_solana.sh`](install_solana.sh)  
 - **Run:** [`python top_x_validator_by_stake.py`](top_x_validator_by_stake.py)  
 
-### Output Files  
+### Output  
 - **Generated Filter:** [`identity_pubkey_filter.flux`](identity_pubkey_filter.flux)  
 - **Example Usage:** Example of using the Flux `filter()` predicate  

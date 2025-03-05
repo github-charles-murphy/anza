@@ -9,7 +9,7 @@
 
 ---
 
-### Related Files  
+### Files  
 - **Architecture Diagram:** [telemetry.md](telemetry.md)  
 - **Architecture Description:** [telemetry.txt](telemetry.txt)  
 - **Metric Write Path:** [metric-write-path.txt](metric-write-path.txt)  
