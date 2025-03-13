@@ -1,0 +1,6 @@
+A query is submitted to the query API (directly or via a UI).
+DNS-based routing and load balancing distribute requests across query-federation nodes (e.g. Thanos/VictoriaMetrics, InfluxDB-IOx/InfluxDB).
+Query federation nodes split queries into parallel sub-queries targeting multi-tiered sources.
+Query federation nodes typically access and update a cache (e.g., Redis) for recently accessed data
+Query federation nodes merge results from multiple sources.
+Query results are returned to the requestor.

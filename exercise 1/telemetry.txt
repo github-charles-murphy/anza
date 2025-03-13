@@ -1,0 +1,22 @@
+1. Ingestion Layer
+
+Ingests telemetry via a high-throughput, distributed API (e.g., Otel Collector - OLTP via HTTP/gRPC).
+Uses a distributed message queue for decoupling, buffering, durability and availability of high-velocity telemetry (e.g., Kafka).
+
+2. Processing Layer:
+
+Consumes telemetry from the ingestion layer asynchronously (e.g. Otel KafkaReceiver).
+Optionally, perform downsampling, aggregation and/or transformation of telemetry (e.g., using statistical and windowing techniques).
+Sends transformed data to storage layer (e.g. Otel KafkaExporter).
+
+3. Storage Layer:
+
+Hot Storage: High-performance time-series database (TSDB) for recent data (e.g. InfluxDB, Victoria[Metrics/Logs], Jaeger). 
+Optionally, perform downsampling, aggregation and/or transformation of telemetry (e.g., using statistical and windowing techniques).
+Apply TTL/retention policies to retire data to cold storage.
+Cold Storage: Object storage for historical/archival data with aggressive compression (e.g. MinIO).
+
+4. Indexing & Query Layer:
+
+A multi-tiered query-federation engine (e.g. InfluxDB-IOx, Thanos) routes requests to appropriate storage based on the time range.
+For each storage, data indexing/partitioning based on time and/or source is configured for efficient querying.

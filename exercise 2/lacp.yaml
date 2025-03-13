@@ -1,0 +1,18 @@
+network:
+  version: 2
+  renderer: networkd  # Use systemd-networkd
+  ethernets:
+    eth0:
+      dhcp4: no  # Disable DHCP on physical interfaces
+    eth1:
+      dhcp4: no  # Disable DHCP on physical interfaces
+  bonds:
+    bond0:
+      dhcp4: yes  # Enable DHCP to dynamically get IP, gateway, and DNS
+      interfaces:
+        - eth0
+        - eth1
+      parameters:
+        mode: 802.3ad  # LACP mode (requires remote endpoint support)
+        lacp-rate: fast  # Faster LACP negotiation
+        miimon: 1000  # Periodic link status health-check (ms)
